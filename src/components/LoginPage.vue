@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen bg-gray-100">
+  <div class="flex justify-center items-center min-h-screen bg-gray-100 p-4 sm:p-8">
     <div class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
       <h1 class="text-2xl font-semibold mb-6 text-center">Login</h1>
       <form @submit.prevent="login" class="space-y-4">
@@ -64,7 +64,7 @@ const login = async () => {
     console.log('Login response:', response.data);
 
     if (response.data.status) {
-      router.push('/navbar');
+      router.push('/dashboard');
     } else {
       error.value = response.data.message || 'Login failed';
     }
@@ -80,3 +80,12 @@ const login = async () => {
 // Fetch CSRF token when the component is mounted
 onMounted(getCsrfToken);
 </script>
+
+<style scoped>
+/* Optional: Custom styles for better responsiveness */
+@media (max-width: 640px) {
+  .max-w-md {
+    max-width: 100%;
+  }
+}
+</style>
